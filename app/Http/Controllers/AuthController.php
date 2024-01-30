@@ -77,13 +77,4 @@ class AuthController extends Controller
 
         return response()->json(['token' => $token], 200);
     }
-
-    public function forgotPassword(Request $request)
-    {
-        $res = Mail::raw('Hello World', function ($message) {
-            $message->to("abdulwandi@gmail.com")
-                ->subject('Test Dev');
-        });
-        return response()->json(['message' => $res], 200);
-    }
 }

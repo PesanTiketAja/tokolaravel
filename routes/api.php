@@ -20,7 +20,7 @@ use App\Http\Controllers\AttendanceController;
 |
  */
 
-//api/login
+//  localhost/tokolaravel/public/api/login
 //api/logout
 //api/refresh
 Route::post('/register', [AuthController::class, 'register']);
@@ -30,7 +30,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
 });
-Route::post('/attendance/check-in', [AttendanceController::class, 'checkIn']);
 Route::prefix('products')->middleware('auth:sanctum')->group(function () {
     Route::get('', [ProductApiController::class, 'index']);
     Route::post('', [ProductApiController::class, 'store']);
