@@ -25,11 +25,14 @@ use App\Http\Controllers\AttendanceController;
 //api/refresh
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
+
+// Middleware auth:sanctum digunakan untuk memastikan hanya user yang telah login yang dapat mengakses route di bawah ini /logout /refres
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
 });
+
+// Route untuk operasi CRUD produk dengan middleware auth:sanctum  (sama seperti diatas)
 Route::prefix('products')->middleware('auth:sanctum')->group(function () {
     Route::get('', [ProductApiController::class, 'index']);
     Route::post('', [ProductApiController::class, 'store']);
